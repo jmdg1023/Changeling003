@@ -2,22 +2,28 @@
 
 function promptMe(){
   var PWLength = parseInt(window.prompt("Please enter length of password between 8-128:"));
-  var PWLength = String(window.confirm("Do you want to include lowercase?"));
-  var PWLength = String(window.confirm("Do you want to include uppercase?"));
-  var PWLength = parseInt(window.confirm("Do you want to include numeric characters?"));
-  var PWLength = symbol(window.confirm("Do you want to include special characters?"));
 
-  if (PWLength) {
-    if (PWLength > 128){
+  if (isNaN(PWLength)){
+    window.alert("Please enter a valid Number between 8 to 128.")
+    return
+  }
 
-    }
-    console.log("Your number (" + number + ") is matches requirements", "");
-  }  
-else {
-    parseInt(prompt("Your number (" + number + ") is above 128. Please enter a number from 8 to 100", ""));
+  if (PWLength < 8 || PWLength > 128){
+    window.alert("Password length must be between 8 to 128.")
+    return
+  }
+
+  var PWLower = String(window.confirm("Do you want to include lowercase?"));
+  var PWUpper = String(window.confirm("Do you want to include uppercase?"));
+  var PWLNumber = parseInt(window.confirm("Do you want to include numeric characters?"));
+  var PWSymbol = symbol(window.confirm("Do you want to include special characters?"));
+
+  if(PWLower === false && PWLNumber === false && PWUpper === false && PWSymbol === false){
+    console.log("Atleast one character type should be selected. Please try again. ")
+    return
+
   }
 }
-
 
 
 // Get references to the #generate element
@@ -54,8 +60,6 @@ const generateEl = document.getElementByID('generate');
 
 
 
-
-
 const randomFunc = {
   lower: getRandonLower,
   upper: getRandonUpper,
@@ -63,10 +67,6 @@ const randomFunc = {
   symbol: getRandonSymbol
 
 };
-
-
-
-
 
 
 //Random functions
