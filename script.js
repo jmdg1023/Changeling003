@@ -1,22 +1,22 @@
 // Assignment code here
 
 function promptMe(){
-  var PWLength = parseInt(window.prompt("Please enter length of password between 8-128:"));
+  var Length = parseInt(window.prompt("Please enter length of password between 8-128:"));
 
-  if (isNaN(PWLength)){
+  if (isNaN(Length)){
     window.alert("Please enter a valid Number between 8 to 128.")
     return
   }
 
-  if (PWLength < 8 || PWLength > 128){
+  if (Length < 8 || Length > 128){
     window.alert("Password length must be between 8 to 128.")
     return
   }
 
-  var PWLower = String(window.confirm("Do you want to include lowercase?"));
-  var PWUpper = String(window.confirm("Do you want to include uppercase?"));
-  var PWLNumber = parseInt(window.confirm("Do you want to include numeric characters?"));
-  var PWSymbol = symbol(window.confirm("Do you want to include special characters?"));
+  var Lower = String(window.confirm("Do you want to include lowercase?"));
+  var Upper = String(window.confirm("Do you want to include uppercase?"));
+  var Number = parseInt(window.confirm("Do you want to include numeric characters?"));
+  var Symbol = Symbol(window.confirm("Do you want to include special characters?"));
 
   if(PWLower === false && PWLNumber === false && PWUpper === false && PWSymbol === false){
     console.log("Atleast one character type should be selected. Please try again. ")
@@ -49,14 +49,14 @@ generateBtn.addEventListener("click", writePassword);
 
 
 //DOM elements
-const resultEl = document.getElementByID('result');
-const lengthtEl = document.getElementByID('length');
-const numbersEl = document.getElementByID('numbers');
-const uppercaseEl = document.getElementByID('uppercase');
-const lowercaseEl = document.getElementByID('lowercase');
-const symbolsEl = document.getElementByID('symbols');
-const generateEl = document.getElementByID('generate');
-
+const resultEl = document.getElementById('result');
+const lengthtEl = document.getElementById('length');
+const numbersEl = document.getElementById('numbers');
+const uppercaseEl = document.getElementById('uppercase');
+const lowercaseEl = document.getElementById('lowercase');
+const symbolsEl = document.getElementById('symbols');
+const generateEl = document.getElementById('generate');
+const clipboardEl = document.getElementById('clipboard');
 
 
 
@@ -67,6 +67,44 @@ const randomFunc = {
   symbol: getRandonSymbol
 
 };
+//Generate event listener
+generateEl.addEventListener('click', () =>{
+  const length = +lengthtEl.value;
+  const hasLower = lowercaseEl.checked;
+  const hasUpper = uppercaseEl.checked;
+  const hasNumber = numbercaseEl.checked;
+  const hasSymbol = symbolcaseEl.checked;
+
+  
+resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+
+});
+
+//generat password function
+function generatePassword(lower, upper, number, symbol, length){
+
+  let generatePassword = '';
+  const typesCount = lower + upper + number + symbol;
+  
+  const typesArr = [{lower}, {upper}, {number}, {symbol}].filter
+  (item => Object.values(item)[0]);
+
+  if(typesCount === 0){
+    return '';
+  }
+
+  for(let i=0; i< length; i += typesCount){
+    typesArr.forEach(type =>{
+      const funcName = Object.keys(type)[0];
+
+      generatePassword  += randomFunc[funcName]();
+    });
+  }
+  const finalPassword = generatePassword.slice(0, length);
+  return finalPassword;
+}
+
+
 
 
 //Random functions
