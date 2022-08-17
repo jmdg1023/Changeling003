@@ -1,6 +1,7 @@
 // Assignment code here
 
 function promptMe(){
+   
   var Length = parseInt(window.prompt("Please enter length of password between 8-128:"));
 
   if (isNaN(Length)){
@@ -8,18 +9,39 @@ function promptMe(){
     return
   }
 
-  if (Length < 8 || Length > 128){
+  else if (Length < 8 || Length > 128){
     window.alert("Password length must be between 8 to 128.")
     return
   }
+  var choiceArr = []
+  //var Lower = String(window.confirm("Do you want to include lowercase?"));
+  // var Upper = String(window.confirm("Do you want to include uppercase?"));
+  // var Number = parseInt(window.confirm("Do you want to include numeric characters?"));
+  // var Symbol = String(window.confirm("Do you want to include special characters?"));
 
-  var Lower = String(window.confirm("Do you want to include lowercase?"));
-  var Upper = String(window.confirm("Do you want to include uppercase?"));
-  var Number = parseInt(window.confirm("Do you want to include numeric characters?"));
-  var Symbol = Symbol(window.confirm("Do you want to include special characters?"));
+  if (confirm("Do you want to include lowercase in your password?")){
+    choiceArr = choiceArr.concat(getRandomLower());
+    console.log(choiceArr);
+    return
+  }
+  if (confirm("Do you want to include upperrcase in your password?")){
+    choiceArr = choiceArr.concat(getRandomUpper());
+    return
+  }
+  if (confirm("Do you want to include numbers in your password?")){
+    choiceArr = choiceArr.concat(getRandomNumber());
+    return
+  }
+  if (confirm("Do you want to include symbols in your password?")){
+    choiceArr = choiceArr.concat(getRandomSymbol());
+    return
+  }
 
-  if(PWLower === false && PWLNumber === false && PWUpper === false && PWSymbol === false){
-    console.log("Atleast one character type should be selected. Please try again. ")
+
+ 
+ 
+  if(Lower === false && Number === false && Upper === false && Symbol === false){
+    console.log("Atleast one character type should be selected. Please try again. ")    
     return
 
   }
@@ -38,19 +60,28 @@ function writePassword() {
 
 }
 
-
-
 // Add event listener to generate button
 generateBtn.addEventListener("click", writePassword);
 
+//Generate event listener---issue
+// generateEl.addEventListener('click', () =>{
+//   const length = + lengthEl.value;
+//   const hasLower = lowercaseEl.true;
+//   const hasUpper = uppercaseEl.confirm;
+//   const hasNumber = numbercaseEl.confirm;
+//   const hasSymbol = symbolcaseEl.confirm;
 
+  
+// resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
+
+// });
 
 
 
 
 //DOM elements
 const resultEl = document.getElementById('result');
-const lengthtEl = document.getElementById('length');
+const lengthEl = document.getElementById('length');
 const numbersEl = document.getElementById('numbers');
 const uppercaseEl = document.getElementById('uppercase');
 const lowercaseEl = document.getElementById('lowercase');
@@ -59,26 +90,13 @@ const generateEl = document.getElementById('generate');
 const clipboardEl = document.getElementById('clipboard');
 
 
-
 const randomFunc = {
-  lower: getRandonLower,
-  upper: getRandonUpper,
-  number: getRandonNumber,
-  symbol: getRandonSymbol
+  lower: getRandomLower,
+  upper: getRandomUpper,
+  number: getRandomNumber,
+  symbol: getRandomSymbol
 
 };
-//Generate event listener
-generateEl.addEventListener('click', () =>{
-  const length = +lengthtEl.value;
-  const hasLower = lowercaseEl.checked;
-  const hasUpper = uppercaseEl.checked;
-  const hasNumber = numbercaseEl.checked;
-  const hasSymbol = symbolcaseEl.checked;
-
-  
-resultEl.innerText = generatePassword(hasLower, hasUpper, hasNumber, hasSymbol, length);
-
-});
 
 //generat password function
 function generatePassword(lower, upper, number, symbol, length){
@@ -109,18 +127,18 @@ function generatePassword(lower, upper, number, symbol, length){
 
 //Random functions
 
-function getRandonLower(){
+function getRandomLower(){
   return String.fromCharCode(Math.floor(Math.random() * 26)  + 97);
 }
 
-function getRandonUpper(){
+function getRandomUpper(){
   return String.fromCharCode(Math.floor(Math.random() * 26)  + 65);
 }
-function getRandonNumber(){
+function getRandomNumber(){
   return String.fromCharCode(Math.floor(Math.random() * 10)  + 48);
 }
 
-function getRandonSymbol(){
+function getRandomSymbol(){
   const symbol = ''
   return String[Math.floor(Math.random() * symbols.length)];
 }
