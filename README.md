@@ -24,9 +24,9 @@ Depending on users answer (true or false) will determine which criteria will be 
 
 4. When all prompts are answered, a password is generated that matches the selected criteria (length, lowercase, uppercase, numbers, symbols).
 
-7.Generated password will show up in the 'Secure password' Box.
+5. Generated password will show up in the 'Secure password' Box.
 
- ##  Links 📌
+ ##  Links to Repo and deployment📌
 
 * GitHub Repository link https://github.com/jmdg1023/Changeling003
 
