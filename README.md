@@ -4,7 +4,13 @@ Changeling - A word of play for 'Challenging'
 
 003 - Natural number following 002 (The previous challenge in this course) 
 
+ ##  Links to Repo and deployment📌
 
+* GitHub Repository link https://github.com/jmdg1023/Changeling003
+
+* Site is live at https://jmdg1023.github.io/Changeling003/
+
+ 
 ## What this Generate Password site does 💡💡💡
 
 1. When GENERATE PASSWORD button is clicked a promt will show asking to Input password length required between 8 to 128. Entering anything other than an Integer entering numbers lower than 8 or higher than 128 will alert the user "Please enter a valid Number. Length must be between 8 to 128." 
@@ -26,13 +32,7 @@ Depending on users answer (true or false) will determine which criteria will be 
 
 5. Generated password will show up in the 'Secure password' Box.
 
- ##  Links to Repo and deployment📌
 
-* GitHub Repository link https://github.com/jmdg1023/Changeling003
-
-* Site is live at https://jmdg1023.github.io/Changeling003/
-
- 
 
 
 
