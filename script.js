@@ -33,7 +33,7 @@ function promptMe(){
     choiceArr = choiceArr.concat(symbolsArr);
   }
 
-  if(choiceArr=[]){
+  if(choiceArr===[]){
     alert("Atleast one character type should be selected. Please try again");
   }
   return true;
