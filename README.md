@@ -10,7 +10,13 @@ Changeling - A word of play for 'Challenging'
 
 * Site is live at https://jmdg1023.github.io/Changeling003/
 
- 
+## Learning Resources
+* https://www.youtube.com/watch?v=JheVaV6bPvE&t=5819s
+* https://www.youtube.com/watch?v=duNmhKgtcsI&t=1103s
+* https://www.youtube.com/watch?v=v2jfGo7ztm8&t=851s
+
+
+
 ## What this Generate Password site does 💡💡💡
 
 1. When GENERATE PASSWORD button is clicked a promt will show asking to Input password length required between 8 to 128. 
